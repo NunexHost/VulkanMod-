@@ -42,7 +42,8 @@ public class DrawUtil {
         Renderer.getInstance().bindGraphicsPipeline(pipeline);
         Renderer.getInstance().bindTexture(attachment);
 
-        // ... (projection matrix setup)
+        Matrix4f matrix4f = new Matrix4f().setOrtho(0.0F, 1.0F, 0.0F, 1.0F, 0.0F, 1.0F, true);
+        RenderSystem.setProjectionMatrix(matrix4f, VertexSorting.DISTANCE_TO_ORIGIN);
 
         Renderer.getInstance().uploadAndBindUBOs(pipeline);
         blitQuad();
